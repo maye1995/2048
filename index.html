@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>2048</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<style type="text/css">
+	*{margin: 0;padding:0;list-style: none;}
+	body{
+		background: #ccc;
+	}
+	.wrap{
+		text-align: center;
+	}
+	.box{
+		margin: 30px auto 0;
+		border: 1px solid red;
+		width: 500px;
+		height: 1000px;
+	}
+	.content img{
+		padding-top: 10px;
+		width: 500px;
+		height: 500px;
+		border: 1px solid blue;
+		/* background: url(images/bg.png)0 0 no-repeat; */
+	}
+	.content p{
+		width: 125px;
+		height: 50px;
+		margin-left: 180px;
+		margin-top: 10px;
+		background: url(images/start.png)0 0 no-repeat;
+		cursor: pointer;
+	}
+	#list li{
+		float: left;
+		width: 110px;
+		height: 110px;
+		border-radius: 1%;
+		margin: 6px;
+		border: 1px dashed green;
+		background: #999;
+		text-align: center;
+		font-size: 30px;
+		line-height: 110px;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="box">
+			<div class="content">
+				<p></p>
+				<ul id="list">
+				<!-- <img src="images/bg.png" alt=""> -->
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+	var list=document.getElementById('list');
+	var lis=list.getElementsByTagName('li');
+
+	for (var i = 0; i < lis.length-1; i++) {
+		lis[i].index=i;
+		lis[i].onclick=function  (argument) {
+			alert(this.index);
+			
+		}
+	};
+	//当点击ＮＥＷ　ＧＡＭＥ　按钮时，产生随机数（０－１５）
+	$('.content p').click(function start (argument) {
+		// start1();
+		var x = 15;     
+   		var y = 0;     
+   		
+   		var rand1 = parseInt(Math.random() * (x - y + 1) + y);  
+   		var rand2 = parseInt(Math.random() * (x - y + 1) + y);
+   		if (rand2==rand1) {
+   			var rand2 = parseInt(Math.random() * (x - y + 1) + y);
+   		};
+   		console.log(rand1,rand2);
+
+   		//将产生的两个随机数对应的li 加载背景2.png
+   		$('#list li').css('background','#999');
+   		$('#list li').html('');
+   		$('#list li:eq('+rand1+')').css('background','#fff');
+   		$('#list li:eq('+rand1+')').html('2');
+   		$('#list li:eq('+rand2+')').css('background','#fff');
+		$('#list li:eq('+rand2+')').html('2');
+	})
+	//键盘事件
+	
+	$(document).keydown(function  (argument) {
+		switch (event.keyCode) {
+    case 37:
+        alert('方向键-左');
+        break;
+    case 39:
+        alert('方向键-右');
+        break;
+    case 38:
+        alert('方向键-上');
+  //       if ($('#list li nth-child(4n)').html()==$('#list li nth-child(4n-4)'.html())) {
+		// 	alert('1');
+		// };
+        break;
+    case 40:
+        alert('方向键-下');
+        break;   
+
+    };
+   return false;
+	})
+	function up (argument) {
+		
+	}
+	function sum (argument) {
+		
+	}
+	</script>
+</body>
+</html>
